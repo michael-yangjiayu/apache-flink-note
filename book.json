@@ -15,19 +15,47 @@
     },
     "output": null,
     "pdf": {
+        "pageNumbers": false,
         "fontSize": 12,
-        "footerTemplate": null,
-        "headerTemplate": null,
+        "paperSize": "a4",
         "margin": {
-            "bottom": 36,
             "left": 62,
             "right": 62,
-            "top": 36
+            "top": 36,
+            "bottom": 36
         },
-        "pageNumbers": false,
-        "paperSize": "a4"
+        "footerTemplate": null,
+        "headerTemplate": null
     },
-    "plugins": [],
     "title": "基于 Apache Flink 的流处理",
-    "variables": {}
+    "variables": {},
+    "plugins": ["theme-default", "-lunr", "-search", "search-plus", "addcssjs", "favicon-plus", "anchors", "github-buttons", "last-modified", "medium-zoom"],
+    "pluginsConfig": {
+        "fontsettings": {
+            "theme":  "night",
+            "family": "sans"
+        },
+        "github-buttons": {
+            "buttons": [{
+                "user": "michael-yangjiayu",
+                "repo": "apache-flink-note",
+                "type": "star",
+                "size": "large"
+            }]
+        },
+        "intopic-toc": {
+            "label": "Navigation"
+        },
+        "github-edit": {
+            "repo": "michael-yangjiayu/apache-flink-note",
+            "branch": "master"
+        },
+        "favicon": ".gitbook/icons/flink.ico",
+        "output": "_book"
+    },
+    "medium-zoom": {
+        "margin": 24,
+        "background": "#363b40",
+        "scrollOffset": 0
+    }
 }
