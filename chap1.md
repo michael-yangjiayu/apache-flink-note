@@ -21,5 +21,5 @@
 * 故障处理机制
 * 事件时间和顺序依赖
 
-![Lambda 架构](.gitbook\assets\chap1_lambda.png)
+![Lambda 架构](.gitbook/assets/chap1_lambda.png)
 
