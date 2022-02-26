@@ -1,0 +1,518 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>7. 有状态算子和应用 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="chap8.html" />
+    
+    
+    <link rel="prev" href="chap6.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    0. 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chap1.html">
+            
+                <a href="chap1.html">
+            
+                    
+                    1. 状态化流处理概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chap2.html">
+            
+                <a href="chap2.html">
+            
+                    
+                    2. 流处理基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chap3.html">
+            
+                <a href="chap3.html">
+            
+                    
+                    3. Apache Flink 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="chap4.html">
+            
+                <a href="chap4.html">
+            
+                    
+                    4. 设置 Apache Flink 开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="chap5.html">
+            
+                <a href="chap5.html">
+            
+                    
+                    5. DataStream API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="chap6.html">
+            
+                <a href="chap6.html">
+            
+                    
+                    6. 基于时间和窗口的算子
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="chap7.html">
+            
+                <a href="chap7.html">
+            
+                    
+                    7. 有状态算子和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="chap8.html">
+            
+                <a href="chap8.html">
+            
+                    
+                    8. 读写外部系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="chap9.html">
+            
+                <a href="chap9.html">
+            
+                    
+                    9. 搭建 Flink 运行流式应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="chap10.html">
+            
+                <a href="chap10.html">
+            
+                    
+                    10. Flink 和流式应用运维
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="chap11.html">
+            
+                <a href="chap11.html">
+            
+                    
+                    11. 还有什么？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >7. 有状态算子和应用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="7-&#x6709;&#x72B6;&#x6001;&#x7B97;&#x5B50;&#x548C;&#x5E94;&#x7528;">7. &#x6709;&#x72B6;&#x6001;&#x7B97;&#x5B50;&#x548C;&#x5E94;&#x7528;</h1>
+<h2 id="&#x5B9E;&#x73B0;&#x6709;&#x72B6;&#x6001;&#x51FD;&#x6570;">&#x5B9E;&#x73B0;&#x6709;&#x72B6;&#x6001;&#x51FD;&#x6570;</h2>
+<ul>
+<li><strong>&#x5728; RuntimeContext &#x4E2D;&#x58F0;&#x660E;&#x952E;&#x503C;&#x5206;&#x533A;&#x72B6;&#x6001;</strong><ul>
+<li>&#x952E;&#x503C;&#x5206;&#x533A;&#x72B6;&#x6001;&#x539F;&#x8BED;&#xFF08;&#x5FC5;&#x987B;&#x4F5C;&#x7528;&#x5728; KeyedStream&#xFF09;<ul>
+<li><code>ValueState[T]</code>, <code>ListState[T]</code>, <code>MapState[K, V]</code>&#xFF1A;&#x652F;&#x6301;&#x8BFB;&#x53D6;&#x3001;&#x66F4;&#x65B0;&#xFF0C;&#x652F;&#x6301; State.clear()</li>
+<li><code>ReducingState[T]</code>, <code>AggregatingState[I, O]</code>&#xFF1A;add &#x540E;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#xFF0C;&#x652F;&#x6301; State.clear()</li>
+</ul>
+</li>
+<li>e.g. &#x76F8;&#x90BB;&#x6E29;&#x5EA6;&#x53D8;&#x5316;&#x8D85;&#x8FC7;&#x7ED9;&#x5B9A;&#x9608;&#x503C;&#x65F6;&#xFF0C;&#x53D1;&#x51FA;&#x8B66;&#x62A5;<ul>
+<li>RichFunction&#xFF1A;open &#x521D;&#x59CB;&#x5316;&#xFF0C;&#x6CE8;&#x518C; StateDescriptor&#xFF0C;&#x72B6;&#x6001;&#x5F15;&#x7528;&#x5BF9;&#x8C61; &#x4F5C;&#x4E3A; &#x666E;&#x901A;&#x6210;&#x5458;&#x53D8;&#x91CF;</li>
+<li>&#x5355;&#x4E2A; ValueState &#x7B80;&#x5199;&#xFF1A;<code>mapWithState||flatMapWithState((IN, Option[S]))</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>&#x901A;&#x8FC7; ListCheckpointed &#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7B97;&#x5B50;&#x5217;&#x8868;&#x72B6;&#x6001;</strong><ul>
+<li>ListCheckpointed&#xFF1A;&#x5217;&#x8868;&#x7ED3;&#x6784;&#x5141;&#x8BB8;&#x5BF9;&#x4F7F;&#x7528;&#x4E86;&#x5C31;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#x7684;&#x51FD;&#x6570;&#x4FEE;&#x6539;&#x5E76;&#x884C;&#x5EA6;<ul>
+<li>snapshotState(checkpointId: Long, timestamp: Long): java.util.List[T] // &#x8FD4;&#x56DE;&#x72B6;&#x6001;&#x5FEB;&#x7167;&#x5217;&#x8868;</li>
+<li>restoreState(java.util.List[T] state): Unit // &#x6062;&#x590D;&#x51FD;&#x6570;&#x72B6;&#x6001;&#xFF08;&#x542F;&#x52A8;/&#x6545;&#x969C;&#x6062;&#x590D;&#xFF09;</li>
+</ul>
+</li>
+<li>e.g. &#x6BCF;&#x4E2A;&#x51FD;&#x6570;&#x5E76;&#x884C;&#x5B9E;&#x4F8B;&#x5185;&#xFF0C;&#x7EDF;&#x8BA1;&#x8BE5;&#x5206;&#x533A;&#x6570;&#x636E;&#x8D85;&#x8FC7;&#x67D0;&#x4E00;&#x9608;&#x503C;&#x7684;&#x6E29;&#x5EA6;&#x503C;&#x6570;&#x76EE;</li>
+</ul>
+</li>
+<li><strong>&#x4F7F;&#x7528;&#x8054;&#x7ED3;&#x7684;&#x5E7F;&#x64AD;&#x72B6;&#x6001;</strong><ul>
+<li>e.g. &#x4E00;&#x6761;&#x89C4;&#x5219;&#x6D41; + &#x4E00;&#x6761;&#x9700;&#x8981;&#x5E94;&#x7528;&#x8FD9;&#x4E9B;&#x89C4;&#x5219;&#x7684;&#x4E8B;&#x4EF6;&#x6D41;</li>
+<li>&#x6B65;&#x9AA4;&#xFF1A;<ul>
+<li>&#x8C03;&#x7528; DataStream.broadcast() &#x65B9;&#x6CD5;&#x521B;&#x5EFA; BroadcastStream &#x5E76;&#x63D0;&#x4F9B; MapStateDescriptor &#x5BF9;&#x8C61;</li>
+<li>&#x5C06; BroadcastStream &#x548C;&#x4E00;&#x4E2A; DataStream / KeyedStream &#x8054;&#x7ED3;&#x8D77;&#x6765;&#xFF08;connect&#xFF09;</li>
+<li>&#x5728;&#x8054;&#x7ED3;&#x540E;&#x7684;&#x6570;&#x636E;&#x6D41;&#x4E0A;&#x5E94;&#x7528;&#x51FD;&#x6570;&#xFF1A; (Keyed)BroadcastProcessFunction</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>&#x4F7F;&#x7528; CheckpointedFunction &#x63A5;&#x53E3;</strong><ul>
+<li>CheckpointedFunction&#xFF1A;&#x7528;&#x4E8E;&#x6307;&#x5B9A;&#x7531;&#x72B6;&#x6001;&#x51FD;&#x6570;&#x7684;&#x6700;&#x5E95;&#x5C42;&#x63A5;&#x53E3;<ul>
+<li>initializeState()&#xFF1A;&#x521B;&#x5EFA;&#x5E76;&#x884C;&#x5B9E;&#x4F8B;&#x65F6;&#x88AB;&#x8C03;&#x7528;</li>
+<li>snapshotState()&#xFF1A;&#x5728;&#x751F;&#x6210;&#x68C0;&#x67E5;&#x70B9;&#x4E4B;&#x524D;&#x8C03;&#x7528;</li>
+</ul>
+</li>
+<li>e.g. &#x5206;&#x522B;&#x5229;&#x7528;&#x952E;&#x503C;&#x5206;&#x533A;&#x72B6;&#x6001;&#x548C;&#x7B97;&#x5B50;&#x72B6;&#x6001;&#xFF0C;&#x7EDF;&#x8BA1;&#x6BCF;&#x4E2A;&#x952E;&#x503C;&#x5206;&#x533A;&#x548C;&#x6BCF;&#x4E2A;&#x7B97;&#x5B50;&#x5B9E;&#x4F8B;&#x9AD8;&#x6E29;&#x8BFB;&#x6570;</li>
+</ul>
+</li>
+<li><strong>&#x63A5;&#x6536;&#x68C0;&#x67E5;&#x70B9;&#x5B8C;&#x6210;&#x901A;&#x77E5;</strong><ul>
+<li>CheckpointListener.notifyCheckpointComplete(long checkpointid)<ul>
+<li>&#x4F1A;&#x5728; JobManager &#x5C06;&#x68C0;&#x67E5;&#x70B9;&#x6CE8;&#x518C;&#x4E3A;&#x5DF2;&#x5B8C;&#x6210;&#x65F6;&#x8C03;&#x7528;&#xFF0C;&#x4F46;&#x4E0D;&#x4FDD;&#x8BC1;&#x6BCF;&#x4E2A;&#x5B8C;&#x6210;&#x7684;&#x68C0;&#x67E5;&#x70B9;&#x90FD;&#x4F1A;&#x8C03;&#x7528;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x4E3A;&#x6709;&#x72B6;&#x6001;&#x7684;&#x5E94;&#x7528;&#x5F00;&#x542F;&#x6545;&#x969C;&#x6062;&#x590D;">&#x4E3A;&#x6709;&#x72B6;&#x6001;&#x7684;&#x5E94;&#x7528;&#x5F00;&#x542F;&#x6545;&#x969C;&#x6062;&#x590D;</h2>
+<ul>
+<li><strong>&#x68C0;&#x67E5;&#x70B9;&#x95F4;&#x9694;&#xFF1A;</strong>&#x8F83;&#x77ED;&#x7684;&#x95F4;&#x9694;&#x4F1A;&#x4E3A;&#x5E38;&#x89C4;&#x5904;&#x7406;&#x5E26;&#x6765;&#x8F83;&#x5927;&#x7684;&#x5F00;&#x9500;&#xFF0C;&#x4F46;&#x7531;&#x4E8E;&#x6062;&#x590D;&#x65F6;&#x8981;&#x91CD;&#x65B0;&#x5904;&#x7406;&#x7684;&#x6570;&#x636E;&#x91CF;&#x8F83;&#x5C0F;&#xFF0C;&#x6240;&#x4EE5;&#x6062;&#x590D;&#x901F;&#x5EA6;&#x4F1A;&#x66F4;&#x5FEB;</li>
+<li><strong>&#x5176;&#x4ED6;&#x914D;&#x7F6E;&#x9009;&#x9879;&#xFF1A;</strong>&#x4E00;&#x81F4;&#x6027;&#x4FDD;&#x969C;&#x7684;&#x9009;&#x62E9;&#x3001;&#x53EF;&#x540C;&#x65F6;&#x751F;&#x6210;&#x7684;&#x68C0;&#x67E5;&#x70B9;&#x6570;&#x91CF;&#x3001;......</li>
+</ul>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+env.enableCheckpointing(<span class="hljs-number">10000</span>L) <span class="hljs-comment">// 10s</span>
+</code></pre>
+<h2 id="&#x786E;&#x4FDD;&#x6709;&#x72B6;&#x6001;&#x5E94;&#x7528;&#x7684;&#x53EF;&#x7EF4;&#x62A4;&#x6027;">&#x786E;&#x4FDD;&#x6709;&#x72B6;&#x6001;&#x5E94;&#x7528;&#x7684;&#x53EF;&#x7EF4;&#x62A4;&#x6027;</h2>
+<pre><code class="lang-scala"><span class="hljs-comment">// &#x7B97;&#x5B50;&#x552F;&#x4E00;&#x6807;&#x8BC6;</span>
+<span class="hljs-keyword">val</span> alerts: <span class="hljs-type">DataStream</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Doouble</span>, <span class="hljs-type">Double</span>)] = keyedSensorData
+    .flatMap(<span class="hljs-keyword">new</span> <span class="hljs-type">TemperatureAlertFunction</span>(<span class="hljs-number">1.1</span>))
+    .uid(<span class="hljs-string">&quot;TempAlert&quot;</span>)
+
+<span class="hljs-comment">// &#x6700;&#x5927;&#x5E76;&#x884C;&#x5EA6;&#xFF08;&#x5177;&#x6709;&#x952E;&#x503C;&#x5206;&#x533A;&#x72B6;&#x6001;&#x7684;&#x7B97;&#x5B50;&#xFF09;</span>
+<span class="hljs-keyword">val</span> env = <span class="hljs-type">StreamExecutionEnvironment</span>.getExecutionEnvironment
+env.setMaxParallelism(<span class="hljs-number">512</span>) <span class="hljs-comment">// &#x5E94;&#x7528;&#x7EA7;&#x522B;</span>
+<span class="hljs-keyword">val</span> alerts: <span class="hljs-type">DataStream</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Doouble</span>, <span class="hljs-type">Double</span>)] = keyedSensorData
+    .flatMap(<span class="hljs-keyword">new</span> <span class="hljs-type">TemperatureAlertFunction</span>(<span class="hljs-number">1.1</span>))
+    .setMaxParallelism(<span class="hljs-number">1024</span>) <span class="hljs-comment">// &#x7B97;&#x5B50;&#x7EA7;&#x522B;&#xFF0C;&#x8986;&#x76D6;&#x5E94;&#x7528;&#x7EA7;&#x522B;</span>
+</code></pre>
+<h2 id="&#x6709;&#x72B6;&#x6001;&#x5E94;&#x7528;&#x7684;&#x6027;&#x80FD;&#x53CA;&#x9C81;&#x68D2;&#x6027;">&#x6709;&#x72B6;&#x6001;&#x5E94;&#x7528;&#x7684;&#x6027;&#x80FD;&#x53CA;&#x9C81;&#x68D2;&#x6027;</h2>
+<ul>
+<li><strong>&#x9009;&#x62E9;&#x72B6;&#x6001;&#x540E;&#x7AEF;</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>&#x72B6;&#x6001;&#x540E;&#x7AEF;</th>
+<th>&#x7279;&#x6027;</th>
+<th>&#x672C;&#x5730;</th>
+<th>&#x68C0;&#x67E5;&#x70B9;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MemoryStateBackend</td>
+<td>&#x4EC5;&#x4F5C;&#x5F00;&#x53D1;/&#x8C03;&#x8BD5;</td>
+<td>JVM &#x5185;&#x5B58;&#xFF0C;&#x5EF6;&#x8FDF;&#x4F4E;&#xFF0C;&#x4F46;OOM/GC</td>
+<td>JobManager &#x5806;&#x5185;&#x5B58;</td>
+</tr>
+<tr>
+<td>FsStateBackend</td>
+<td>&#x672C;&#x5730;&#x5185;&#x5B58;+&#x6545;&#x969C;&#x5BB9;&#x9519;</td>
+<td>JVM &#x5185;&#x5B58;&#xFF0C;&#x5EF6;&#x8FDF;&#x4F4E;&#xFF0C;&#x4F46;OOM/GC</td>
+<td>&#x8FDC;&#x7A0B;&#x6301;&#x4E45;&#x5316;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</td>
+</tr>
+<tr>
+<td>RocksDBStateBackend</td>
+<td>&#x7528;&#x4E8E;&#x975E;&#x5E38;&#x5927;&#x7684;&#x72B6;&#x6001;</td>
+<td>&#x672C;&#x5730; RocksDB &#x5B9E;&#x4F8B;&#xFF0C;&#x5E8F;&#x5217;&#x5316;&#x8BFB;&#x5199;</td>
+<td>&#x8FDC;&#x7A0B;&#x6301;&#x4E45;&#x5316;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>&#x9009;&#x62E9;&#x72B6;&#x6001;&#x539F;&#x8BED;</strong><ul>
+<li>MapState[X, Y] &#x4F18;&#x4E8E; ValueState[HashMap[X, Y]]</li>
+<li>ListState[X] &#x4F18;&#x4E8E; ValueState[List[X]]</li>
+<li>&#x5EFA;&#x8BAE;&#x6BCF;&#x6B21;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x53EA;&#x66F4;&#x65B0;&#x4E00;&#x6B21;&#x72B6;&#x6001;&#xFF08;&#x68C0;&#x67E5;&#x70B9;&#x9700;&#x8981;&#x548C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x540C;&#x6B65;&#xFF09;</li>
+</ul>
+</li>
+<li><strong>&#x9632;&#x6B62;&#x72B6;&#x6001;&#x6CC4;&#x9732;</strong><ul>
+<li>&#x6E05;&#x9664;&#x65E0;&#x7528;&#x72B6;&#x6001;&#xFF08;&#x952E;&#x503C;&#x57DF;&#x53D8;&#x5316;&#xFF09;&#xFF1A;&#x6CE8;&#x518C;&#x9488;&#x5BF9;&#x672A;&#x6765;&#x67D0;&#x4E2A;&#x4E8B;&#x4EF6;&#x70B9;&#x7684;&#x8BA1;&#x65F6;&#x5668;&#xFF08;&#x7A97;&#x53E3;Trigger&#x3001;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF09;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x66F4;&#x65B0;&#x6709;&#x72B6;&#x6001;&#x5E94;&#x7528;">&#x66F4;&#x65B0;&#x6709;&#x72B6;&#x6001;&#x5E94;&#x7528;</h2>
+<blockquote>
+<p>&#x751F;&#x6210;&#x4FDD;&#x5B58;&#x70B9;&#xFF0C;&#x505C;&#x7528;&#x8BE5;&#x5E94;&#x7528;&#xFF0C;&#x91CD;&#x542F;&#x65B0;&#x7248;&#x672C;</p>
+</blockquote>
+<ul>
+<li><strong>&#x4FDD;&#x6301;&#x73B0;&#x6709;&#x72B6;&#x6001;&#x66F4;&#x65B0;&#x5E94;&#x7528;</strong></li>
+<li><strong>&#x4ECE;&#x5E94;&#x7528;&#x4E2D;&#x5220;&#x9664;&#x72B6;&#x6001;</strong></li>
+<li><strong>&#x4FEE;&#x6539;&#x7B97;&#x5B50;&#x7684;&#x72B6;&#x6001;</strong><ul>
+<li>(&#x221A;) &#x901A;&#x8FC7;&#x66F4;&#x6539;&#x72B6;&#x6001;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;e.g. ValueState[Int] =&gt; ValueState[Double]&#xFF0C;Avro &#x7C7B;&#x578B;&#x652F;&#x6301;</li>
+<li>(x) &#x901A;&#x8FC7;&#x66F4;&#x6539;&#x72B6;&#x6001;&#x539F;&#x8BED;&#x7C7B;&#x578B;&#xFF0C;e.g. ValueState[List[String]] =&gt; ListState[String]&#xFF0C;&#x4E0D;&#x652F;&#x6301;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x67E5;&#x8BE2;&#x5F0F;&#x72B6;&#x6001;">&#x67E5;&#x8BE2;&#x5F0F;&#x72B6;&#x6001;</h2>
+<ul>
+<li><strong>&#x670D;&#x52A1;&#x8FDB;&#x7A0B;</strong>&#xFF1A;QueryableStateClient, QueryableStateClientProxy, QueryableStateServer</li>
+<li><strong>&#x5BF9;&#x5916;&#x66B4;&#x6F0F;&#x53EF;&#x67E5;&#x8BE2;&#x5F0F;&#x72B6;&#x6001;</strong><ul>
+<li>&#x901A;&#x7528;&#x65B9;&#x6CD5;&#xFF1A;StateDescriptor.setQueryable(String)</li>
+<li>&#x7B80;&#x4FBF;&#x65B9;&#x6CD5;&#xFF1A;&#x6570;&#x636E;&#x6D41;.keyBy().setQueryable(String) &#x6DFB;&#x52A0;&#x53EF;&#x67E5;&#x8BE2;&#x5F0F;&#x72B6;&#x6001;&#x7684;&#x6570;&#x636E;&#x6C47;</li>
+</ul>
+</li>
+<li><strong>&#x4ECE;&#x5916;&#x90E8;&#x7CFB;&#x7EDF;&#x67E5;&#x8BE2;&#x72B6;&#x6001;</strong><ul>
+<li>QueryableStateClient(tmHostname, proxyPort).getKvState()</li>
+<li>e.g. Flink &#x5E94;&#x7528;&#x72B6;&#x6001;&#x67E5;&#x8BE2;&#x4EEA;&#x8868;&#x76D8;</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chap6.html" class="navigation navigation-prev " aria-label="Previous page: 6. 基于时间和窗口的算子">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="chap8.html" class="navigation navigation-next " aria-label="Next page: 8. 读写外部系统">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"7. 有状态算子和应用","level":"1.8","depth":1,"next":{"title":"8. 读写外部系统","level":"1.9","depth":1,"path":"chap8.md","ref":"chap8.md","articles":[]},"previous":{"title":"6. 基于时间和窗口的算子","level":"1.7","depth":1,"path":"chap6.md","ref":"chap6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chap7.md","mtime":"2022-02-26T06:56:35.969Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-26T07:53:22.801Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

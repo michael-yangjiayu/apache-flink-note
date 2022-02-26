@@ -1,0 +1,450 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>5. DataStream API · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="chap6.html" />
+    
+    
+    <link rel="prev" href="chap4.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    0. 简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="chap1.html">
+            
+                <a href="chap1.html">
+            
+                    
+                    1. 状态化流处理概述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="chap2.html">
+            
+                <a href="chap2.html">
+            
+                    
+                    2. 流处理基础
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="chap3.html">
+            
+                <a href="chap3.html">
+            
+                    
+                    3. Apache Flink 架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="chap4.html">
+            
+                <a href="chap4.html">
+            
+                    
+                    4. 设置 Apache Flink 开发环境
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6" data-path="chap5.html">
+            
+                <a href="chap5.html">
+            
+                    
+                    5. DataStream API
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="chap6.html">
+            
+                <a href="chap6.html">
+            
+                    
+                    6. 基于时间和窗口的算子
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="chap7.html">
+            
+                <a href="chap7.html">
+            
+                    
+                    7. 有状态算子和应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="chap8.html">
+            
+                <a href="chap8.html">
+            
+                    
+                    8. 读写外部系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="chap9.html">
+            
+                <a href="chap9.html">
+            
+                    
+                    9. 搭建 Flink 运行流式应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="chap10.html">
+            
+                <a href="chap10.html">
+            
+                    
+                    10. Flink 和流式应用运维
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="chap11.html">
+            
+                <a href="chap11.html">
+            
+                    
+                    11. 还有什么？
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >5. DataStream API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="5-datastream-api">5. DataStream API</h1>
+<h2 id="&#x8F6C;&#x6362;&#x64CD;&#x4F5C;">&#x8F6C;&#x6362;&#x64CD;&#x4F5C;</h2>
+<ul>
+<li><strong>&#x57FA;&#x672C;&#x8F6C;&#x6362;</strong><ul>
+<li>map(T): O</li>
+<li>filter(T): Boolean</li>
+<li>flatMap(T, Collector[O]): Unit</li>
+</ul>
+</li>
+<li><strong>&#x57FA;&#x4E8E; KeyedStream &#x7684;&#x8F6C;&#x6362;</strong><ul>
+<li>keyBy&#xFF1A;DataStream =&gt; KeyedStream</li>
+<li>&#x6EDA;&#x52A8;&#x805A;&#x5408;&#xFF1A;sum, min, max, minBy, maxBy</li>
+<li>reduce(T, T): T</li>
+</ul>
+</li>
+<li><strong>&#x591A;&#x6D41;&#x8F6C;&#x6362;</strong><ul>
+<li>union: FIFO</li>
+<li>connect: DataStream =&gt; ConnectedStream<ul>
+<li>coMap, coFlatMap</li>
+<li>&#x7ED3;&#x5408; keyBy &#x548C; broadcast</li>
+<li>e.g. &#x5F53;&#x6E29;&#x5EA6;&gt;threshold &#x4E14; &#x70DF;&#x96FE;&#x6307;&#x6570;&#x5F88;&#x9AD8;&#x65F6;&#xFF0C;&#x53D1;&#x51FA;&#x706B;&#x707E;&#x8B66;&#x62A5;</li>
+</ul>
+</li>
+<li>split(OutputSelector[IN]) =&gt; SplitStream<ul>
+<li>select(IN): Iterable[String]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>&#x5206;&#x53D1;&#x8F6C;&#x6362;</strong><ul>
+<li>&#x968F;&#x673A;&#xFF1A;shuffle</li>
+<li>&#x8F6E;&#x6D41;&#xFF1A;rebalance</li>
+<li>&#x91CD;&#x8C03;&#xFF1A;rescale&#xFF08;&#x90E8;&#x5206;&#x540E;&#x7EE7;&#x4EFB;&#x52A1;&#xFF09;</li>
+<li>&#x5E7F;&#x64AD;&#xFF1A;broadcast</li>
+<li>&#x5168;&#x5C40;&#xFF1A;global&#xFF08;&#x4E0B;&#x6E38;&#x7B97;&#x5B50;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x5E76;&#x884C;&#x4EFB;&#x52A1;&#xFF09;</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#xFF1A;partitionCustom(Partitioner)</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x8BBE;&#x7F6E;&#x5E76;&#x884C;&#x5EA6;">&#x8BBE;&#x7F6E;&#x5E76;&#x884C;&#x5EA6;</h2>
+<ul>
+<li>&#x8986;&#x76D6;&#x73AF;&#x5883;&#x9ED8;&#x8BA4;&#x5E76;&#x884C;&#x5EA6;&#xFF1A;&#x65E0;&#x6CD5;&#x901A;&#x8FC7;&#x63D0;&#x4EA4;&#x5BA2;&#x6237;&#x7AEF;&#x63A7;&#x5236;&#x5E94;&#x7528;&#x5E76;&#x884C;&#x5EA6;</li>
+<li>&#x8986;&#x76D6;&#x7B97;&#x5B50;&#x9ED8;&#x8BA4;&#x5E76;&#x884C;&#x5EA6;</li>
+</ul>
+<h2 id="&#x7C7B;&#x578B;">&#x7C7B;&#x578B;</h2>
+<ul>
+<li>&#x652F;&#x6301;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;<ul>
+<li>Java &amp; Scala &#x539F;&#x59CB;&#x7C7B;&#x578B;</li>
+<li>Java &amp; Scala &#x5143;&#x7EC4;</li>
+<li>Scala &#x6837;&#x4F8B;&#x7C7B;</li>
+<li>POJO</li>
+<li>&#x6570;&#x7EC4;&#x3001;&#x5217;&#x8868;&#x3001;&#x6620;&#x5C04;&#x3001;&#x679A;&#x4E3E;&#x4EE5;&#x53CA;&#x5176;&#x4ED6;&#x7279;&#x6B8A;&#x7C7B;&#x578B;</li>
+</ul>
+</li>
+<li>&#x4E3A;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x521B;&#x5EFA;&#x7C7B;&#x578B;&#x4FE1;&#x606F;  val stringType: TypeInformation[String] = Types.STRING</li>
+<li>&#x663E;&#x5F0F;&#x63D0;&#x4F9B;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#xFF1A;ResultTypeQueryable</li>
+</ul>
+<h2 id="&#x5B9A;&#x4E49;&#x952E;&#x503C;&#x548C;&#x5F15;&#x7528;&#x5B57;&#x6BB5;">&#x5B9A;&#x4E49;&#x952E;&#x503C;&#x548C;&#x5F15;&#x7528;&#x5B57;&#x6BB5;</h2>
+<ul>
+<li>&#x5B57;&#x6BB5;&#x4F4D;&#x7F6E;&#xFF08;Tuple&#xFF09;</li>
+<li>&#x5B57;&#x6BB5;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;Tuple, POJO, case class&#xFF09;</li>
+<li>&#x952E;&#x503C;&#x9009;&#x62E9;&#x5668;&#xFF1A;getKey(IN): KEY</li>
+</ul>
+<h2 id="&#x5B9E;&#x73B0;&#x51FD;&#x6570;">&#x5B9E;&#x73B0;&#x51FD;&#x6570;</h2>
+<ul>
+<li>&#x51FD;&#x6570;&#x7C7B;&#xFF08;&#x6216;&#x533F;&#x540D;&#x7C7B;&#xFF09;</li>
+<li>Lambda &#x51FD;&#x6570;</li>
+<li>&#x5BCC;&#x51FD;&#x6570;&#xFF1A;RichMapFunction&#x3001;RichFlatMapFunction<ul>
+<li>open&#xFF1A;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x4E00;&#x6B21;&#x6027;&#x8BBE;&#x7F6E;&#x5DE5;&#x4F5C;&#xFF0C;&#x5982;&#x8FDE;&#x63A5;&#x5916;&#x90E8;&#x7CFB;&#x7EDF;</li>
+<li>close&#xFF1A;&#x7EC8;&#x6B62;&#x65B9;&#x6CD5;&#xFF0C;&#x5E38;&#x7528;&#x4E8E;&#x6E05;&#x7406;&#x548C;&#x91CA;&#x653E;&#x8D44;&#x6E90;</li>
+</ul>
+</li>
+</ul>
+<h2 id="&#x5BFC;&#x5165;&#x5916;&#x90E8;&#x548C;-flink-&#x4F9D;&#x8D56;">&#x5BFC;&#x5165;&#x5916;&#x90E8;&#x548C; Flink &#x4F9D;&#x8D56;</h2>
+<ul>
+<li>[&#x63A8;&#x8350;] &#x5C06;&#x5168;&#x90E8;&#x4F9D;&#x8D56;&#x6253;&#x8FDB;&#x5E94;&#x7528;&#x7684; JAR &#x5305;</li>
+<li>&#x5C06;&#x4F9D;&#x8D56;&#x7684; JAR &#x5305;&#x653E;&#x5728;&#x8BBE;&#x7F6E; Flink &#x7684; ./lib &#x76EE;&#x5F55;&#x4E2D;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="chap4.html" class="navigation navigation-prev " aria-label="Previous page: 4. 设置 Apache Flink 开发环境">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="chap6.html" class="navigation navigation-next " aria-label="Next page: 6. 基于时间和窗口的算子">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"5. DataStream API","level":"1.6","depth":1,"next":{"title":"6. 基于时间和窗口的算子","level":"1.7","depth":1,"path":"chap6.md","ref":"chap6.md","articles":[]},"previous":{"title":"4. 设置 Apache Flink 开发环境","level":"1.5","depth":1,"path":"chap4.md","ref":"chap4.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chap5.md","mtime":"2022-02-26T06:56:35.968Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-02-26T07:53:22.801Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
