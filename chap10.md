@@ -69,8 +69,8 @@ PATCH /jobs/<jobId>/rescaling    # 应用扩缩容
 
 ### 在容器中打包并部署应用
 
-{% tabs %}
-{% tab title="构建Docker镜像" %}
+- **构建Docker镜像**
+
 ```bash
 # 针对特定作业构建 Flink Docker 镜像
 ./flink-container/docker/build.sh \
@@ -84,18 +84,14 @@ FLINK_DOCKER_IMAGE_NAME=flink-book-jobs \
   DEFAULT_PARALLELISM=3 \
   docker-compose up -d
 ```
-{% endtab %}
+- **在Kurbernetes上运行镜像**
 
-{% tab title="在Kurbernetes上运行镜像" %}
 ```bash
 # ./flink-container/kurbernetes
 kubectl create -f job-cluster-service.yaml
 kubectl create -f job-cluster-job.yaml
 kubectl create -f task-manager-deployment.yaml
 ```
-{% endtab %}
-{% endtabs %}
-
 ## 控制任务调度
 
 * **控制任务链接**

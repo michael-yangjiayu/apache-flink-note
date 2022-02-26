@@ -13,14 +13,14 @@
   * TaskManager：工作进程包含多个线程，slots 作为资源进行分配
   * Dispatcher：接收提交的应用，启动 JobManager 对应这个应用
 
-![](<.gitbook/assets/image (7).png>)
+![](.gitbook/assets/chap3_architecture.png)
 
 * **应用部署**
   * 框架模式：打包成 JAR 文件，通过客户端提交到运行的服务上
   * 库模式：绑定到应用所在的容器镜像中，常用于微服务架构
 * **任务执行**
 
-![](<.gitbook/assets/image (6).png>)
+![](.gitbook/assets/chap3_job.png)
 
 * **高可用性设置**
   * TaskManager 故障：JobManager 向 ResourceManager 申请更多的 slot
@@ -41,7 +41,7 @@
   * 周期分配器：AssignerWithPeriodicWatermarks
   * 定点分配器：AssignerWithPunctuatedWatermarks
 
-![](<.gitbook/assets/image (8).png>)
+![](.gitbook/assets/chap3_watermark.png)
 
 ## 状态管理
 
@@ -53,3 +53,4 @@
 * 一致性检查点：等待任务处理完所有的输入数据
 * Flink 检查点：检查点分隔符（Chandy-Lamport 分布式快照算法）
 * 保存点
+

@@ -98,7 +98,7 @@ input
 * 基于间隔的 Join：相同键值 && 时间戳不超过指定间隔，e.g. `between(<lower-b>, <upper-b>)`
 * 基于窗口的 Join：`input1.join(input2).where(p1).equalTo(p2).window(...).apply(...)`
 
-![](<.gitbook/assets/image (3).png>)
+![](.gitbook/assets/chap6_join.png)
 
 ## 处理迟到数据
 

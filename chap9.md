@@ -11,7 +11,7 @@
   * 只要有足够多的剩余 slot，作业就可以从工作进程故障中恢复
   * 从主进程故障中恢复作业需要 HA 设置
 
-![向 Flink 独立集群提交应用](<.gitbook/assets/image (11).png>)
+![向 Flink 独立集群提交应用](.gitbook/assets/chap9_standalone.png)
 
 ```bash
 tar xvfz flink-1.11.0-bin-scala_2.11.tgz
@@ -48,7 +48,7 @@ docker run -d --name flink-taskmanager-1 \
 ./bin/flink run .path/to/job.jar # submit job to session
 ```
 
-![作业模式（job mode）启动](<.gitbook/assets/image (12).png>)
+![作业模式（job mode）启动](.gitbook/assets/chap9_yarn.png)
 
 ### Kurbernetes
 

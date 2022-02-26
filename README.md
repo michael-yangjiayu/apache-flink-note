@@ -1,25 +1,7 @@
-# 1. 状态化流处理概述
+# 基于 Apache Flink 的流处理
 
-## 传统数据处理框架
+本文档为书籍笔记，适合复习查阅使用，不适合初次学习。
 
-* **事务型处理**
-  * 数据存储层+数据处理层
-  * e.g. ERP、CRM、web应用
-* **分析型处理**
-  * 定期报告查询
-  * 即席查询（ad-hoc）
-
-## 状态化流处理
-
-* 事件驱动型应用：实时推荐、模式识别、异常检测
-* 数据管道
-* 流式分析
-
-## 开源流处理历史
-
-* Lambda 架构：提速层（提速表）
-* 故障处理机制
-* 事件时间和顺序依赖
-
-![Lambda 架构](<.gitbook/assets/image (4).png>)
+- 英文版：[Stream Processing with Apache Flink](https://book.douban.com/subject/30152777/)
+- 中文版：[基于 Apache Flink 的流处理](https://book.douban.com/subject/34912177/)
 

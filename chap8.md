@@ -114,8 +114,8 @@ input.addSink(sink)
 
 ### Cassandra 数据汇
 
-{% tabs %}
-{% tab title="针对元组" %}
+- **针对元组**
+
 ```scala
 // org.apache.flink.flink-connector-cassandra_2.12 (v1.7.1)
 // 定义 Cassandra 示例表
@@ -135,9 +135,8 @@ sinkBuilder.setHost("localhost").setQuery(
     "INSERT INTO example.sensor(sensorId, temperature) VALUES (?, ?);")
     .build()
 ```
-{% endtab %}
+- **针对 POJO 类型**
 
-{% tab title="针对 POJO 类型" %}
 ```scala
 // 针对 POJO 类型创建 Cassandra 数据汇
 val readings: DataStream[(String, Float)] = ...
@@ -156,9 +155,6 @@ class SensorReading(
     def getTemp: Float = temp
 }
 ```
-{% endtab %}
-{% endtabs %}
-
 * setClusterBuilder(ClusterBuilder)：管理和 Cassandra 的连接
 * setHost(String, \[Int])
 * setQuery(String)
@@ -179,8 +175,8 @@ class SensorReading(
     * def emitWatermark(watermark: Watermark): Unit
   * 标记为暂时空闲：SourceContext.markAsTemporarilyIdle()
 
-{% tabs %}
-{% tab title="SourceFunction" %}
+- **SourceFunction**
+
 ```scala
 // 从 0 数到 LongMaxValue 的 SourceFunction
 class CountSource extends SourceFunction[Long] {
@@ -198,9 +194,8 @@ class CountSource extends SourceFunction[Long] {
   override def cancel(): Unit = isRunning = false
 }
 ```
-{% endtab %}
+- **可重置的 SourceFunction**
 
-{% tab title="可重置的 SourceFunction" %}
 ```scala
 // 可重置的 SourceFunction
 class ReplayableCountSource
@@ -243,9 +238,6 @@ class ReplayableCountSource
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
-
 ## 实现自定义数据汇函数
 
 * SinkFunction.invoke(value: IN, ctx: Context)：e.g. 套接字
@@ -264,8 +256,8 @@ class ReplayableCountSource
       * preCommit(txn: TXN)、commit(txn: TXN)
       * abort(txn: TXN)
 
-{% tabs %}
-{% tab title="SinkFunction" %}
+- **SinkFunction**
+
 ```scala
 // nc -l localhost 9091
 // write the sensor readings to a socket
@@ -300,9 +292,8 @@ class SimpleSocketSink(val host: String, val port: Int)
   }
 }
 ```
-{% endtab %}
+- **IdempotentSinkFunction**
 
-{% tab title="IdempotentSinkFunction" %}
 ```scala
 // write the converted sensor readings to Derby.
 val reading: DataStream[SensorReading] = ...
@@ -348,9 +339,8 @@ class DerbyUpsertSink extends RichSinkFunction[SensorReading] {
   }
 }
 ```
-{% endtab %}
+- **WAL**
 
-{% tab title="WAL" %}
 ```scala
 // print to standard out with a write-ahead log.
 // results are printed when a checkpoint is completed.
@@ -380,9 +370,8 @@ class StdOutWriteAheadSink extends GenericWriteAheadSink[(String, Double)](
   }
 }
 ```
-{% endtab %}
+- **2PC**
 
-{% tab title="2PC" %}
 ```scala
 class TransactionalFileSink(val targetPath: String, val tempPath: String)
     extends TwoPhaseCommitSinkFunction[(String, Double), String, Void](
@@ -447,9 +436,6 @@ class TransactionalFileSink(val targetPath: String, val tempPath: String)
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
-
 ## 异步访问外部系统
 
 * AsyncFunction
@@ -457,8 +443,8 @@ class TransactionalFileSink(val targetPath: String, val tempPath: String)
   * unorderedWait()：只能让水位线和检查点分隔符保持对齐
 * 示例中为每条记录创建 JDBC 连接，实际应用中需要避免
 
-{% tabs %}
-{% tab title="orderedWait" %}
+- **orderedWait**
+
 ```scala
 // look up the location of a sensor from a Derby table with asynchronous requests.
 val readings: DataStream[SensorReading] = ...
@@ -469,9 +455,8 @@ val sensorLocations: DataStream[(String, String)] = AsyncDataStream
     5, TimeUnit.SECONDS,        // timeout requests after 5 seconds
     100)                        // at most 100 concurrent requests
 ```
-{% endtab %}
+- **DerbyAsyncFunction**
 
-{% tab title="DerbyAsyncFunction" %}
 ```scala
 // AsyncFunction that queries a Derby table via JDBC in a non-blocking fashion.
 class DerbyAsyncFunction extends AsyncFunction[SensorReading, (String, String)] {
@@ -532,5 +517,3 @@ class DerbyAsyncFunction extends AsyncFunction[SensorReading, (String, String)] 
   }
 }
 ```
-{% endtab %}
-{% endtabs %}
